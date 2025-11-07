@@ -1,0 +1,684 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-a7b8-c9d0-e1f2a3b4c5d6",
+		"name": "API Clínica Veterinaria (FINAL)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1.0 - Inicial",
+			"description": "Endpoints de la configuración base (4 tablas)",
+			"item": [
+				{
+					"name": "Veterinarians",
+					"item": [
+						{
+							"name": "Get All Veterinarians",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/veterinarians/"
+							}
+						},
+						{
+							"name": "Get Veterinarian by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/veterinarians/:vet_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["veterinarians", ":vet_id"],
+									"variable": [{"key": "vet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Create Veterinarian",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"license_number\": \"VET-12345-AB\",\n  \"first_name\": \"Dr. Ana\",\n  \"last_name\": \"Mora\",\n  \"email\": \"ana.mora@vet.com\",\n  \"phone\": \"8888-7777\",\n  \"specialization\": \"Cirugía General\",\n  \"hire_date\": \"2023-01-15\",\n  \"is_active\": true\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/veterinarians/"
+							}
+						},
+						{
+							"name": "Update Veterinarian (PUT)",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"phone\": \"9999-8888\",\n  \"specialization\": \"Cirugía Ortopédica\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/veterinarians/:vet_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["veterinarians", ":vet_id"],
+									"variable": [{"key": "vet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Delete Veterinarian",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/veterinarians/:vet_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["veterinarians", ":vet_id"],
+									"variable": [{"key": "vet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Vet Schedule by Date",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/veterinarians/:vet_id/schedule?date=2025-10-31",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["veterinarians", ":vet_id", "schedule"],
+									"query": [{"key": "date", "value": "2025-10-31"}],
+									"variable": [{"key": "vet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Vet Appointments (All)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/veterinarians/:vet_id/appointments",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["veterinarians", ":vet_id", "appointments"],
+									"variable": [{"key": "vet_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Owners",
+					"item": [
+						{
+							"name": "Get All Owners",
+							"request": {"method": "GET", "header": [], "url": "http://127.0.0.1:8000/owners/"}
+						},
+						{
+							"name": "Get Owner by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/owners/:owner_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["owners", ":owner_id"],
+									"variable": [{"key": "owner_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Create Owner",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"first_name\": \"Carlos\",\n  \"last_name\": \"Soto\",\n  \"email\": \"carlos.soto@email.com\",\n  \"phone\": \"2222-3333\",\n  \"address\": \"San José, Costa Rica\",\n  \"emergency_contact\": \"911\",\n  \"preferred_payment_method\": \"credit\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/owners/"
+							}
+						},
+						{
+							"name": "Update Owner (PUT/PATCH)",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"phone\": \"4444-5555\",\n  \"address\": \"Heredia, Costa Rica\",\n  \"emergency_contact\": \"8888-8888\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/owners/:owner_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["owners", ":owner_id"],
+									"variable": [{"key": "owner_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Delete Owner",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/owners/:owner_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["owners", ":owner_id"],
+									"variable": [{"key": "owner_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Pets by Owner ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/owners/:owner_id/pets",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["owners", ":owner_id", "pets"],
+									"variable": [{"key": "owner_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Appointments by Owner",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/owners/:owner_id/appointments",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["owners", ":owner_id", "appointments"],
+									"variable": [{"key": "owner_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Pets",
+					"item": [
+						{
+							"name": "Get All Pets",
+							"request": {"method": "GET", "header": [], "url": "http://127.0.0.1:8000/pets/"}
+						},
+						{
+							"name": "Get Pet by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/pets/:pet_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["pets", ":pet_id"],
+									"variable": [{"key": "pet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Create Pet",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Fido\",\n  \"species\": \"dog\",\n  \"breed\": \"Labrador\",\n  \"birth_date\": \"2022-01-10\",\n  \"weight\": 25.5,\n  \"owner_id\": 1,\n  \"microchip_number\": \"A1B2C3D4E5\",\n  \"is_neutered\": true,\n  \"blood_type\": \"DEA 1.1\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/pets/"
+							}
+						},
+						{
+							"name": "Update Pet (PUT/PATCH)",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Fido (actualizado)\",\n  \"weight\": 26.0,\n  \"is_neutered\": true\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/pets/:pet_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["pets", ":pet_id"],
+									"variable": [{"key": "pet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Delete Pet",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/pets/:pet_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["pets", ":pet_id"],
+									"variable": [{"key": "pet_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Appointments",
+					"item": [
+						{
+							"name": "Get All Appointments",
+							"request": {"method": "GET", "header": [], "url": "http://127.0.0.1:8000/appointments/"}
+						},
+						{
+							"name": "Get Appointment by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/appointments/:appt_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["appointments", ":appt_id"],
+									"variable": [{"key": "appt_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Create Appointment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pet_id\": 1,\n  \"veterinarian_id\": 1,\n  \"appointment_date\": \"2025-11-15T10:30:00\",\n  \"reason\": \"Chequeo anual y vacuna\",\n  \"status\": \"scheduled\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/appointments/"
+							}
+						},
+						{
+							"name": "Update Appointment (PUT/PATCH)",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"completed\",\n  \"notes\": \"El paciente está en buen estado. Se aplicó vacuna contra la rabia.\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/appointments/:appt_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["appointments", ":appt_id"],
+									"variable": [{"key": "appt_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Delete Appointment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/appointments/:appt_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["appointments", ":appt_id"],
+									"variable": [{"key": "appt_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Appointments for Today",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/appointments/today"
+							}
+						},
+						{
+							"name": "Get Pending Appointments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/appointments/pending"
+							}
+						},
+						{
+							"name": "Mark Appointment as Completed",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/appointments/:appt_id/complete",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["appointments", ":appt_id", "complete"],
+									"variable": [{"key": "appt_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Cancel Appointment",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/appointments/:appt_id/cancel",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["appointments", ":appt_id", "cancel"],
+									"variable": [{"key": "appt_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "v2.0 - Post-Migraciones",
+			"description": "Endpoints añadidos después de las migraciones",
+			"item": [
+				{
+					"name": "Medical Records (M1)",
+					"item": [
+						{
+							"name": "Get All Medical Records",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/medical-records/"
+							}
+						},
+						{
+							"name": "Get Medical Record by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/medical-records/:record_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["medical-records", ":record_id"],
+									"variable": [{"key": "record_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Create Medical Record",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"appointment_id\": 1,\n  \"diagnosis\": \"Gripe canina leve\",\n  \"treatment\": \"Reposo e hidratación\",\n  \"prescription\": \"Jarabe para la tos canina, 5ml cada 8 horas\",\n  \"follow_up_required\": true\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/medical-records/"
+							}
+						},
+						{
+							"name": "Update Medical Record (PUT)",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"diagnosis\": \"Gripe canina resuelta.\",\n  \"prescription\": \"Ninguna.\",\n  \"follow_up_required\": false\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/medical-records/:record_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["medical-records", ":record_id"],
+									"variable": [{"key": "record_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Vaccines (M2)",
+					"item": [
+						{
+							"name": "Get All Vaccines",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/vaccines/"
+							}
+						},
+						{
+							"name": "Create Vaccine",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Vacuna Rabia (Anual)\",\n  \"manufacturer\": \"VetMed Pharma\",\n  \"species_applicable\": \"dog, cat\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/vaccines/"
+							}
+						}
+					]
+				},
+				{
+					"name": "Vaccination Records (M2)",
+					"item": [
+						{
+							"name": "Get All Vaccination Records",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/vaccination-records/"
+							}
+						},
+						{
+							"name": "Create Vaccination Record",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pet_id\": 1,\n  \"vaccine_id\": 1,\n  \"veterinarian_id\": 1,\n  \"vaccination_date\": \"2025-11-06\",\n  \"next_dose_date\": \"2026-11-06\",\n  \"batch_number\": \"BATCH-RABIES-001\"\n}",
+									"options": {"raw": {"language": "json"}}
+								},
+								"url": "http://127.0.0.1:8000/vaccination-records/"
+							}
+						}
+					]
+				},
+				{
+					"name": "Invoices (M4)",
+					"item": [
+						{
+							"name": "Get All Invoices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/invoices/"
+							}
+						},
+						{
+							"name": "Get Pending Invoices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/invoices/pending"
+							}
+						},
+						{
+							"name": "Get Invoice by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/invoices/:invoice_id",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["invoices", ":invoice_id"],
+									"variable": [{"key": "invoice_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Pay Invoice (Register Payment)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/invoices/:invoice_id/pay",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["invoices", ":invoice_id", "pay"],
+									"variable": [{"key": "invoice_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Pets (Nuevos Endpoints M1, M2)",
+					"item": [
+						{
+							"name": "Get Pet Medical History (M1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/pets/:pet_id/medical-history",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["pets", ":pet_id", "medical-history"],
+									"variable": [{"key": "pet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Pet Vaccinations (M2)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/pets/:pet_id/vaccinations",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["pets", ":pet_id", "vaccinations"],
+									"variable": [{"key": "pet_id", "value": "1"}]
+								}
+							}
+						},
+						{
+							"name": "Get Pet Vaccination Schedule (M2)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/pets/:pet_id/vaccination-schedule",
+									"protocol": "http",
+									"host": ["127.0.0.1"],
+									"port": "8000",
+									"path": ["pets", ":pet_id", "vaccination-schedule"],
+									"variable": [{"key": "pet_id", "value": "1"}]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Reports (M5)",
+					"item": [
+						{
+							"name": "Get Revenue Report",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/reports/revenue?start_date=2025-01-01&end_date=2025-12-31",
+									"protocol": "http",
+									"host": [
+										"127.0.0.1"
+									],
+									"port": "8000",
+									"path": [
+										"reports",
+										"revenue"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2025-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-12-31"
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "Get Popular Veterinarians",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/reports/popular-veterinarians"
+							}
+						},
+						{
+							"name": "Get Vaccination Alerts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:8000/reports/vaccination-alerts"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: clinica_db_container
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=clinica_db
+    ports:
+      - "5435:5432" 
+    volumes:
+      - postgres_clinica_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_clinica_data:
