@@ -89,7 +89,7 @@ class VeterinarianUpdate(BaseModel):
 class Veterinarian(VeterinarianBase):
     veterinarian_id: int
     # --- M5 ---
-    total_appointments: int
+  #  total_appointments: int
     class Config:
         from_attributes = True
 

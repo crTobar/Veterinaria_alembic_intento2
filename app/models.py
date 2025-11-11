@@ -18,9 +18,9 @@ class Veterinarian(Base):
     is_active = Column(Boolean, default=True)
 
     # --- ESTAS LÍNEAS (M5) ---
-    consultation_fee = Column(Numeric(8, 2), nullable=True) # Tarifa por consulta
-    rating = Column(Numeric(3, 2), nullable=True) # Calificación promedio
-    total_appointments = Column(Integer, nullable=False, default=0) # Contador de citas
+  #  consultation_fee = Column(Numeric(8, 2), nullable=True) # Tarifa por consulta
+   # rating = Column(Numeric(3, 2), nullable=True) # Calificación promedio
+    #total_appointments = Column(Integer, nullable=False, default=0) # Contador de citas
     
     # Relación: Un veterinario tiene muchas citas
     appointments = relationship("Appointment", back_populates="veterinarian")
